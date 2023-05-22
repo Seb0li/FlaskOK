@@ -11,6 +11,9 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route("/merci", methods=["POST"])
+def merci():
+    return render_template("merci.html")
 
 @app.route("/formulaires", methods=["GET", "POST"])
 def formulaires():
@@ -49,10 +52,6 @@ def formulaires():
         return render_template('formulaires.html', nom=nom, prenom=prenom, email=email, countries=countries, pays=pays, genre=genre, sujet=sujet, commentaire=commentaire, error=error_message)
     else:
         return render_template('merci.html', nom=nom, prenom=prenom, email=email, countries=countries, pays=pays, genre=genre, sujet=sujet, commentaire=commentaire)
-
-@app.route("/merci", methods=["GET", "POST"])
-def merci():
-    return render_template("merci.html")
 
 
 if __name__ == '__main__':
